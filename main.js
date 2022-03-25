@@ -226,3 +226,9 @@ $("#soNTDT").onclick = function(){
 
     $("#kqSoNTDT").innerHTML = kqSoNTDT;
 };
+
+/**
+ * * 9. Nhập thêm 1 mảng số thực, tìm xem trong mảng có bao nhiêu số nguyên?
+ */
+
+var mangSoThuc = [1.2, 2.3, 4.5, 6.6];
