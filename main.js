@@ -229,6 +229,81 @@ $("#soNTDT").onclick = function(){
 
 /**
  * * 9. Nhập thêm 1 mảng số thực, tìm xem trong mảng có bao nhiêu số nguyên?
+ * 
+ * - Đầu vào: tạo 1 mảng số thực
+ * 
+ * -Xử lý:
+ * B1: tạo hàm kiểm tra số nguyên
+ *  . ghép 2 mảng
+ *  . gán 0 cho biến đếm
+ *  . lặp từng phần tử cho vào if kiểm tra số nguyên
+ *  . tăng biến đếm nếu thỏa đk
+ * B2: gọi hàm
+ * 
+ * - Đầu ra: in kết quả đếm được
  */
 
 var mangSoThuc = [1.2, 2.3, 4.5, 6.6];
+
+function kiemTraSoNguyen(){
+    var mangTongHop = mangSoNguyen.concat(mangSoThuc);
+    var demSoNguyen = 0;
+    for(i = 0; i < mangTongHop.length; i++){
+        if(Number.isInteger(mangTongHop[i])){
+            demSoNguyen++;
+        };
+    };
+    return demSoNguyen;
+};
+
+$("#soLuongSoNguyen").onclick = function(){
+   var kq = kiemTraSoNguyen();
+
+    $("#kqTimSoLuongSN").innerHTML = kq;
+};
+
+/**
+ * 10. so sánh số lượng số dương và số lượng số âm xem số nào nhiều hơn.
+ * 
+ * - Đầu vào: người dùng nhập
+ * 
+ * - Xử lý:
+ * B1: tạo hàm so sánh
+ *  .đếm số dương
+ *  .đếm số âm
+ *  . so sánh
+ * B2: gọi hàm
+ * 
+ * - Đầu ra: in ra ra màn hình
+ */
+
+function soSanhDuongAm(){
+    var demSoDuong = 0;
+    var demSoAm = 0;
+
+    for(i = 0; i < mangSoNguyen.length; i++){
+        if(mangSoNguyen[i] > 0){
+            demSoDuong++;
+        };
+    };
+
+    for(i = 0; i < mangSoNguyen.length; i++){
+        if(mangSoNguyen[i] < 0){
+            demSoAm++;
+        };
+    };
+
+    if(demSoDuong > demSoAm){
+        return "Số dương nhiều hơn số âm";
+    }else if(demSoDuong < demSoAm){
+        return "Số âm nhiều hơn số dương";
+    }else{
+        return "Số lượng số dương và số âm bằng nhau";
+    };
+};
+
+$("#btnSoSanh").onclick = function(){
+    var kq = soSanhDuongAm();
+
+    $("#kqSoSanh").innerHTML = kq;
+};
