@@ -187,20 +187,21 @@ $("#soCCC").onclick = function(){
  * 
  * - Đầu ra: in ra màn hình mảng mới
  */
+var mangHoanVi = mangSoNguyen;
 function doiViTri(viTri_1, viTri_2){
-    var doiViTri = mangSoNguyen[viTri_1];
-    mangSoNguyen[viTri_1] = mangSoNguyen[viTri_2];
-    mangSoNguyen[viTri_2] = doiViTri;
+    var doiViTri = mangHoanVi[viTri_1];
+    mangHoanVi[viTri_1] = mangHoanVi[viTri_2];
+    mangHoanVi[viTri_2] = doiViTri;
 
-    return mangSoNguyen;
+    return mangHoanVi;
 };
 
 $("#doiViTri").onclick = function(){
     var viTri_1 = $("#viTri_1").value;
     var viTri_2 = $("#viTri_2").value;
-    mangSoNguyen = doiViTri(viTri_1, viTri_2);
+    mangHoanVi = doiViTri(viTri_1, viTri_2);
     
-    $("#inMangDoiViTri").innerHTML = mangSoNguyen;
+    $("#inMangDoiViTri").innerHTML = mangHoanVi;
 };
 
 /**
@@ -214,22 +215,23 @@ $("#doiViTri").onclick = function(){
  * - Đầu ra: in mảng đã được sắp xếp
  */
 
+var mangSapXep = mangSoNguyen;
 function sapXepTangDan(){
-    for(i = 0; i < mangSoNguyen.length - 1; i++){
-        for(j = i+1; j < mangSoNguyen.length; j++){
-            if(mangSoNguyen[i] > mangSoNguyen[j]){
-                var temp = mangSoNguyen[i];
-                mangSoNguyen[i] = mangSoNguyen[j];
-                mangSoNguyen[j] = temp;
+    for(i = 0; i < mangSapXep.length - 1; i++){
+        for(j = i+1; j < mangSapXep.length; j++){
+            if(mangSapXep[i] > mangSapXep[j]){
+                var temp = mangSapXep[i];
+                mangSapXep[i] = mangSapXep[j];
+                mangSapXep[j] = temp;
             };
         };
     };
-    return mangSoNguyen;
+    return mangSapXep;
 };
 
 $("#sapXepTangDan").onclick = function(){
     sapXepTangDan();
-    $("#kqSapXep").innerHTML = mangSoNguyen;
+    $("#kqSapXep").innerHTML = mangSapXep;
 };
 
 /**
