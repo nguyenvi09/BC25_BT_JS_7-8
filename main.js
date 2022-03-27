@@ -107,28 +107,26 @@ $("#soNhoNhat").onclick = function(){
  *  4. Tìm số dương nhỏ nhất trong mảng
  * -Đầu vào: mảng người dùng nhập
  * -Xử lý:
- * B1: tạo hàm lấy SND gán cho min
- * B2: tạo hàm tìm SNDNN duyệt từng phần tử
+ * B1: tạo hàm tìm SNDNN duyệt từng phần tử
+ * -duyệt lấy số nguyên đầu tiên gán cho min
  * -nếu phần tử > 0 & phần tử < min
  * -> gán phần tử đó cho min
- * B3: gọi 2 hàm 
+ * B2: gọi hàm 
  * 
- * -Đầu ra: in minSoNguyenDuong
+ * -Đầu ra: in kết quả
  */
-
-// hàm lấy số nguyên dương đầu tiên trong mảng 
-function laySND(){
-    for(i = 0; i <= mangSoNguyen.length; i++){
-        if(mangSoNguyen[i] > 0){
-            return minSoNguyenDuong = mangSoNguyen[i];
-        };
-    }; 
-};
 
 // hàm tìm số nguyên dương nhỏ nhất
 function timSNDNN(){
+    for(i = 0; i <= mangSoNguyen.length; i++){
+        if(mangSoNguyen[i] > 0){
+            var minSoNguyenDuong = mangSoNguyen[i];
+            break;
+        };
+    };
+
     for(i = 0; i < mangSoNguyen.length; i++){
-        if(mangSoNguyen[i] > 0 && mangSoNguyen[i] <= minSoNguyenDuong){
+        if(mangSoNguyen[i] > 0 && mangSoNguyen[i] < minSoNguyenDuong){
             minSoNguyenDuong = mangSoNguyen[i];
         };
     };
@@ -137,10 +135,9 @@ function timSNDNN(){
 };
 
 $("#soDuongNhoNhat").onclick = function(){
-    laySND();
-    timSNDNN();
+    var kq = timSNDNN();
 
-    $("#kqSoDuongNhoNhat").innerHTML = minSoNguyenDuong;
+    $("#kqSoDuongNhoNhat").innerHTML = kq;
 };
 
 /**
@@ -187,21 +184,20 @@ $("#soCCC").onclick = function(){
  * 
  * - Đầu ra: in ra màn hình mảng mới
  */
-var mangHoanVi = mangSoNguyen;
 function doiViTri(viTri_1, viTri_2){
+    var mangHoanVi = mangSoNguyen.slice(0);
     var doiViTri = mangHoanVi[viTri_1];
     mangHoanVi[viTri_1] = mangHoanVi[viTri_2];
     mangHoanVi[viTri_2] = doiViTri;
-
     return mangHoanVi;
 };
 
 $("#doiViTri").onclick = function(){
     var viTri_1 = $("#viTri_1").value;
     var viTri_2 = $("#viTri_2").value;
-    mangHoanVi = doiViTri(viTri_1, viTri_2);
+    var kq =  doiViTri(viTri_1, viTri_2);
     
-    $("#inMangDoiViTri").innerHTML = mangHoanVi;
+    $("#inMangDoiViTri").innerHTML = kq;
 };
 
 /**
@@ -215,8 +211,8 @@ $("#doiViTri").onclick = function(){
  * - Đầu ra: in mảng đã được sắp xếp
  */
 
-var mangSapXep = mangSoNguyen;
 function sapXepTangDan(){
+    var mangSapXep = mangSoNguyen.slice(0);
     for(i = 0; i < mangSapXep.length - 1; i++){
         for(j = i+1; j < mangSapXep.length; j++){
             if(mangSapXep[i] > mangSapXep[j]){
@@ -230,8 +226,8 @@ function sapXepTangDan(){
 };
 
 $("#sapXepTangDan").onclick = function(){
-    sapXepTangDan();
-    $("#kqSapXep").innerHTML = mangSapXep;
+    var kq = sapXepTangDan();
+    $("#kqSapXep").innerHTML = kq;
 };
 
 /**
