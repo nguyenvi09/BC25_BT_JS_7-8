@@ -18,45 +18,60 @@
     />
   </head>
   <body>
-    <div class="container mt-5 text-center">
+    <div
+      class="container mt-5"
+      style="font-weight: bold; color: red; font-size: 20px"
+    >
       <input id="soNguyen" type="text" placeholder="Nhập số nguyên bất kỳ" />
-      <button id="them">Thêm</button>
-      <button id="xoa">Xóa</button>
-      <button id="xoaTatCa">Xóa tất cả</button>
+      <button id="them" class="btn btn-success">Thêm</button>
+      <button id="xoa" class="btn btn-warning">Xóa</button>
+      <button id="xoaTatCa" class="btn btn-danger">Xóa tất cả</button>
       <div id="inMang"></div>
-      <button id="tongSoDuong">Tính tổng các số dương</button>
+      <button id="tongSoDuong" class="btn btn-primary">
+        1.Tính tổng các số dương
+      </button>
       <span id="kqTongSoDuong"></span>
       <br />
-      <button id="demSoDuong">Điếm số dương</button>
+      <button id="demSoDuong" class="btn btn-secondary">2.Điếm số dương</button>
       <span id="kqDemSoDuong"></span>
       <br />
-      <button id="soNhoNhat">Tìm số nhỏ nhất</button>
+      <button id="soNhoNhat" class="btn btn-info">3.Tìm số nhỏ nhất</button>
       <span id="kqSoNhoNhat"></span>
       <br />
-      <button id="soDuongNhoNhat">Tìm số dương nhỏ nhất</button>
+      <button id="soDuongNhoNhat" class="btn btn-dark">
+        4.Tìm số dương nhỏ nhất
+      </button>
       <span id="kqSoDuongNhoNhat"></span>
       <br />
-      <button id="soCCC">Tìm số chẵn cuối cùng trong mảng</button>
+      <button id="soCCC" class="btn btn-success">
+        5.Tìm số chẵn cuối cùng trong mảng
+      </button>
       <span id="kqTimSCCC"></span>
       <br />
-      <input type="text" placeholder="Vị trí thứ nhất" id="viTri1" />
-      <input type="text" placeholder="Vị trí thứ hai" id="viTri2" />
-      <button id="doiViTri">Đổi vị trí</button>
+      <input type="text" placeholder="Vị trí thứ nhất" id="viTri_1" />
+      <input type="text" placeholder="Vị trí thứ hai" id="viTri_2" />
+      <button id="doiViTri" class="btn btn-warning">6.Đổi vị trí</button>
       <div id="inMangDoiViTri"></div>
       <br />
-      <button id="sapXepTangDan">Sắp xếp tăng dần</button>
-      <div id="kqSapXep"></div>
-      <br />
-      <button id="soNTDT">Số nguyên tố đầu tiên</button>
-      <div id="kqSoNTDT"></div>
-      <br />
-      <button id="soLuongSoNguyen">
-        Tìm trong mảng có bao nhiêu số nguyên
+      <button id="sapXepTangDan" class="btn btn-primary">
+        7.Sắp xếp tăng dần
       </button>
-      <div id="kqTimSoLuongSN"></div>
+      <span id="kqSapXep"></span>
       <br />
-      <button id="btnSoSanh">So sánh số lượng số Dương & Âm</button>
-      <div id="kqSoSanh"></div>
+      <button id="soNTDT" class="btn btn-success">
+        8.Số nguyên tố đầu tiên
+      </button>
+      <span id="kqSoNTDT"></span>
+      <br />
+      <button id="soLuongSoNguyen" class="btn btn-danger">
+        9.Tìm trong mảng có bao nhiêu số nguyên
+      </button>
+      <span id="kqTimSoLuongSN"></span>
+      <br />
+      <button id="btnSoSanh" class="btn btn-info">
+        10.So sánh số lượng số Dương & Âm
+      </button>
+      <span id="kqSoSanh"></span>
     </div>
 
     <!-- Optional JavaScript -->

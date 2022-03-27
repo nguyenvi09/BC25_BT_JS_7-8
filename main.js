@@ -23,7 +23,7 @@ $("#them").onclick = function(){
 
     mangSoNguyen.push(soNguyen);
 
-    $("#inMang").innerHTML = mangSoNguyen;
+    $("#inMang").innerHTML = "Mảng số nguyên: " + mangSoNguyen;
 };
 
 $("#xoa").onclick = function(){
@@ -38,7 +38,17 @@ $("#xoaTatCa").onclick = function(){
   $("#inMang").innerHTML = mangSoNguyen;
 };
 
-// Tính tổng các số dương trong mảng
+/**
+ * 1:Tính tổng các số dương trong mảng
+ * 
+ * -Đầu vào: mảng do người dùng nhập
+ * 
+ * - Xử lý:
+ * B1: tạo biến tongSoDuong = 0
+ * B2: duyệt từng phần tử > 0 , rồi tính tổng cộng dồn
+ * 
+ * - Đầu ra: in ra màn hình
+ */
 $("#tongSoDuong").onclick = function(){
     var tongSoDuong = 0;
     for(i = 0; i <= mangSoNguyen.length; i++){
@@ -50,7 +60,16 @@ $("#tongSoDuong").onclick = function(){
     $("#kqTongSoDuong").innerHTML = tongSoDuong;
 };
 
-// 2. Đếm có bao nhiêu số dương trong mảng
+
+/**
+ * 2. Đếm có bao nhiêu số dương trong mảng
+ * - Đầu vào: mảng người dùng nhập
+ * - Xử lý: 
+ * B1: tạo biến đếm =0 
+ * B2: duyệt từng phần tử -> nếu > 0 => tăng đếm 1 đv
+ * 
+ * -Đầu ra: in kq đếm ra màn hình
+ */
 $("#demSoDuong").onclick = function(){
     var demSoDuong = 0;
 
@@ -63,10 +82,19 @@ $("#demSoDuong").onclick = function(){
     $("#kqDemSoDuong").innerHTML = demSoDuong;
 };
 
-// 3. Tìm số nhỏ nhất trong mảng
+/**
+ * 3. Tìm số nhỏ nhất trong mảng
+ * -Đầu vào: mảng người dùng nhập
+ * -Xử lý:
+ * B1: gán vị trí 0 là số nhỏ nhất 
+ * B2: duyệt từng phần tử -> so sánh min 
+ * nếu < min thì gán lại cho min
+ * 
+ * -Đầu ra: in min
+ */
 $("#soNhoNhat").onclick = function(){
-    var min = 0;
-    for(i = 0; i <= mangSoNguyen.length; i++){
+    var min = mangSoNguyen[0];
+    for(i = 0; i < mangSoNguyen.length; i++){
         if(mangSoNguyen[i] < min){
             min = mangSoNguyen[i];
         };
@@ -75,13 +103,17 @@ $("#soNhoNhat").onclick = function(){
     $("#kqSoNhoNhat").innerHTML = min;
 };
 
-// 4. Tìm số dương nhỏ nhất trong mảng
 /**
- * giả sử mangSoNguyen = [-1, 0, 3, 2, 1, 5]
- * i = 1 -> 0 > 0 flase
- * i = 2 -> 3 > 0 
+ *  4. Tìm số dương nhỏ nhất trong mảng
+ * -Đầu vào: mảng người dùng nhập
+ * -Xử lý:
+ * B1: tạo hàm lấy SND gán cho min
+ * B2: tạo hàm tìm SNDNN duyệt từng phần tử
+ * -nếu phần tử > 0 & phần tử < min
+ * -> gán phần tử đó cho min
+ * B3: gọi 2 hàm 
  * 
- * tìm số nguyên dương trong mảng trước rồi gán cho min
+ * -Đầu ra: in minSoNguyenDuong
  */
 
 // hàm lấy số nguyên dương đầu tiên trong mảng 
@@ -94,9 +126,8 @@ function laySND(){
 };
 
 // hàm tìm số nguyên dương nhỏ nhất
-
 function timSNDNN(){
-    for(i = 0; i <= mangSoNguyen.length; i++){
+    for(i = 0; i < mangSoNguyen.length; i++){
         if(mangSoNguyen[i] > 0 && mangSoNguyen[i] <= minSoNguyenDuong){
             minSoNguyenDuong = mangSoNguyen[i];
         };
@@ -116,25 +147,32 @@ $("#soDuongNhoNhat").onclick = function(){
  *  5. Tìm số chẵn cuối cùng trong mảng. Nếu không có thì trả về -1
  *  - Đầu vào: mangSoNguyen do người dùng nhập
  *  - Xử lý: 
- * B1: đảo ngược mảng
- * B2: lặp từng phần tử kiểm tra số chẵn
+ * B1: tạo hàm lấy ra số chẵn cuối cùng trong mảng
+ * B2: kiểm tra số chẵn in ra nếu không phải trả về -1
  * 
  *  - Đầu ra: in kết quả
  */
-function timSCCC(){
-    mangSoNguyen = mangSoNguyen.reverse();
-    for(i = 0; i <= mangSoNguyen.length; i++){
+// hàm lấy ra số chẵn cuối cùng trong mảng
+function laySoChanCC(){
+    var mangSoChan = [];
+    for(i = 0; i < mangSoNguyen.length; i++){
         if(mangSoNguyen[i] % 2 == 0){
-            return mangSoNguyen[i];
-        }else{
-            return -1;
+            mangSoChan.push(mangSoNguyen[i]);
+            // console.log(mangSoChan);
         };
     };
+    return mangSoChan[mangSoChan.length - 1];
 };
 
 $("#soCCC").onclick = function(){
-    var kqTimSCCC = timSCCC();
-    $("#kqTimSCCC").innerHTML = kqTimSCCC;
+    var kq;
+    if(laySoChanCC() % 2 === 0){
+        kq = laySoChanCC();
+    }else{
+        kq = -1;
+    };
+
+    $("#kqTimSCCC").innerHTML = kq;
 };
 
 /**
@@ -149,20 +187,19 @@ $("#soCCC").onclick = function(){
  * 
  * - Đầu ra: in ra màn hình mảng mới
  */
-function doiViTri(viTri1, viTri2){
-    var doiViTri = mangSoNguyen[viTri1];
-    mangSoNguyen[viTri1] = mangSoNguyen[viTri2];
-    mangSoNguyen[viTri2] = doiViTri;
+function doiViTri(viTri_1, viTri_2){
+    var doiViTri = mangSoNguyen[viTri_1];
+    mangSoNguyen[viTri_1] = mangSoNguyen[viTri_2];
+    mangSoNguyen[viTri_2] = doiViTri;
 
     return mangSoNguyen;
 };
 
 $("#doiViTri").onclick = function(){
-    var viTri1 = $("#viTri1").value;
-    var viTri2 = $("#viTri2").value;
-
-    doiViTri(viTri1, viTri2);
-
+    var viTri_1 = $("#viTri_1").value;
+    var viTri_2 = $("#viTri_2").value;
+    mangSoNguyen = doiViTri(viTri_1, viTri_2);
+    
     $("#inMangDoiViTri").innerHTML = mangSoNguyen;
 };
 
@@ -170,16 +207,28 @@ $("#doiViTri").onclick = function(){
  * 7. sắp sếp mảng theo thứ tự tăng dần
  * - Đầu vào: mảng được nhập
  * 
- * - Xử lý: dùng hàm sort() và truyền vào hàm callback so sánh các giá trị trong mảng
+ * - Xử lý: 
+ * B1: tạo hàm để sắp xếp tăng dần
+ * B2: gọi hàm
  * 
  * - Đầu ra: in mảng đã được sắp xếp
  */
 
-$("#sapXepTangDan").onclick = function(){
-    mangSoNguyen.sort(function(a, b){
-        return a - b;
-    });
+function sapXepTangDan(){
+    for(i = 0; i < mangSoNguyen.length - 1; i++){
+        for(j = i+1; j < mangSoNguyen.length; j++){
+            if(mangSoNguyen[i] > mangSoNguyen[j]){
+                var temp = mangSoNguyen[i];
+                mangSoNguyen[i] = mangSoNguyen[j];
+                mangSoNguyen[j] = temp;
+            };
+        };
+    };
+    return mangSoNguyen;
+};
 
+$("#sapXepTangDan").onclick = function(){
+    sapXepTangDan();
     $("#kqSapXep").innerHTML = mangSoNguyen;
 };
 
